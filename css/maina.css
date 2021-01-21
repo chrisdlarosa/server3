@@ -1,0 +1,33 @@
+body {
+	/*background: -webkit-linear-gradient(bottom,#F3F0F0,white 45%);
+	background-attachment: fixed;
+	background-color: #ffffff;*/
+	background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");
+	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.navbar{
+	box-shadow: 2px 0px 13px;
+	/*background-color: #459130;*/
+	background-color: #46ebd0;
+	background-image: url("https://www.transparenttextures.com/patterns/az-subtle.png");
+	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+#moon {
+	color: #586353;
+	position: relative;
+}
+
+.menus {
+	/*color: #5D5D5D;*/
+	position: relative;
+}
+
+.logo {
+	font-family: 'Righteous', cursive;
+}
+
+.fondo {
+	background-color: rgba(245,245,245,0.3);
+}
