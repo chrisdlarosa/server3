@@ -90,7 +90,6 @@
         $db->conectarBD();
         extract($_POST);
         $hash = password_hash($pass, PASSWORD_DEFAULT);
-        $tel = $telefono;
         $cadena="UPDATE usuarios SET password='$hash' WHERE id='$id'";
         $db->ejecutaSQL($cadena);
         ?>

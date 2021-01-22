@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="../css/forms.css">
     <link rel="stylesheet" href="../css/categorias.css">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-	<style>
-		form {margin-bottom: 50px; margin-top: -60px}
-	</style>
+  	<style>
+  		form {margin-bottom: 50px; margin-top: -60px}
+  	</style>
 </head>
 <body>
      <nav class="navbar navbar-expand-lg navbar-light sticky-top">
@@ -83,42 +83,23 @@
   </nav>
   
 <!-- ***************Inicio del sitio****************************** -->
+	<div class="container" id="cat">
+    <?php
+    include 'database.php';
+    $db=new Database();
+    $db->conectarBD();
+    extract($_POST);
+    $calle = strtoupper($calle);
+    $numero = strtoupper($numero);
+    $colonia = strtoupper($colonia);
+    $cadena="INSERT INTO direcciones (calle,numero,colonia,cliente) VALUES ('$calle','$numero','$colonia','$id')";
+    $db->ejecutaSQL($cadena);
+    ?>
+    <div class="alert alert-success">Direccion agregada exitosamente!</div>
     <?php 
-    include '../scripts/database.php';
-    $conexion = new Database();
-    $conexion->conectarBD();
-    $consulta="SELECT*FROM clientes";
-    $clientes = $conexion->seleccionar($consulta);
+    header("refresh:3; ../php/nuevoclienteJo.php");
      ?>
-  <div class="container fondo" id="cat">
-    <h2>Clientes</h2>
-    <table class="table table-hover table-responsive-sm">
-      <thead class="bg-primary">
-        <th scope="col">Folio</th>
-        <th scope="col">Nombre del cliente</th>
-        <th scope="col">Razon Social</th>
-        <th scope="col"></th>
-      </thead>
-      <tbody>
-        <?php foreach($clientes as $cliente): ?>
-          <tr>
-            <th> <?php echo $cliente->folio; ?> </th>
-            <td> <?php echo $cliente->nombre; ?> </td>
-            <td> <?php echo $cliente->razonsocial; ?> </td>
-            <td style="display: inline-flex;">
-              <a href="cliente.php?id=<?php echo $cliente->id; ?>" class="btn btn-info" role="button" aria-pressed="true" style="margin-right: 3px;" ><i class="fas fa-pen"></i></a>
-            </td>
-          </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
   </div>
-  <?php $conexion->desconectarBD(); ?>
-  </div>
-
-  <footer class="container footer">
-    
-  </footer>
 
 <!-- ***************Termino contenido del sitio******************** -->
 <!-- ***************Enlazes a Jquery*********************************************** -->
