@@ -75,7 +75,7 @@ class Database
 				session_start();
 				$_SESSION["usuario"]=$correo;
 				$_SESSION["tipo"]=$tipo;
-				$_SESSION["vendedor"]=$id;
+				$_SESSION["user"]=$id;
 				echo "<div class='alert alert-success'>";
 				echo "<h2 aling='center'>Bienvenido ".$_SESSION["usuario"]."</h2>";
 				echo "</div>";
