@@ -1,8 +1,15 @@
+<?php
+session_start();
+if (empty($_SESSION["idusuario"])) {
+    header("refresh:0; ../index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Productos</title>
+    <title>Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/svg+xml" href="../favicon/moon-solid.svg" sizes="any">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
@@ -13,32 +20,14 @@
     <link rel="stylesheet" href="../css/categorias.css">
     <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 	<style>
-		form {margin-bottom: 50px; margin-top: -30px}
+		form {margin-bottom: 50px; margin-top: -60px}
 	</style>
 </head>
 <body>
-     <?php include '../php/navbar1.php'?>
+     <?php include 'navbar1.php'?>
   
 <!-- ***************Inicio del sitio****************************** -->
-    <div class="container">
-      <?php
-        include 'database.php';
-        $db=new Database();
-        $db->conectarBD();
-        extract($_POST);
-        $nombre = strtoupper($nombre);
-        $apellidos = strtoupper($apellidos);
-        $correo = strtoupper($correo);
-        $tel = $telefono;
-        $cadena="UPDATE usuarios SET folio='$folio',nombre='$nombre',apellidos='$apellidos',correo='$correo',telefono='$tel',tipo='$tipo' WHERE id='$id'";
-        $db->ejecutaSQL($cadena);
-        ?>
-        <div class="alert alert-success">Usuario actualizado exitosamente!</div>
-        <?php 
-        header("refresh:3; ../php/usuarios.php");
-     ?>
-    </div>
-
+    
 
 <!-- ***************Termino contenido del sitio******************** -->
 <!-- ***************Enlazes a Jquery*********************************************** -->

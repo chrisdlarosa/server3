@@ -17,7 +17,7 @@
   	</style>
 </head>
 <body>
-     <?php include 'navbar1.php'?>
+     <?php include '../php/navbar1.php'?>
   
 <!-- ***************Inicio del sitio****************************** -->
 	<div class="container" id="cat">

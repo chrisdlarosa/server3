@@ -47,23 +47,26 @@ $usuarios = $conexion->seleccionar($consul);
 	</style>
 </head>
 <body>
-     <?php include 'navbar1.php'?>
+     <?php include 'navbar1.php';
+          $usuarioasignando = $_SESSION["idusuario"];
+
+     ?>
   
 <!-- ***************Inicio del sitio****************************** -->
 	<div class="container fondo" id="cat">
     <form action="../scripts/registrando.php" method="post" class="form col-md-6 col-11">
       <h2>Agregar tarea</h2>
       <div class="form-group">
-        <input type="text" class="form-control" id="" name="idcliente" aria-describedby="emailHelp" placeholder="Folio de usaurio" maxlength="11" value="<?php echo $id; ?>" required disabled>
+        <input type="hidden" class="form-control" id="cliente" name="cliente" aria-describedby="emailHelp" placeholder="Folio de usaurio" maxlength="11" value="<?php echo $id; ?>" required>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="" name="nombrecliente" aria-describedby="emailHelp" placeholder="Razon social del cliente" maxlength="111" value="<?php echo $nombre; ?>" required disabled>
+        <input type="text" class="form-control" id="nombrecliente" name="nombrecliente" aria-describedby="emailHelp" placeholder="Razon social del cliente" maxlength="111" value="<?php echo $nombre; ?>" required disabled>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="" name="razonsocial" aria-describedby="emailHelp" placeholder="Folio de usaurio" maxlength="155" value="<?php echo $razonsocial; ?>" required disabled>
+        <input type="text" class="form-control" id="razonsocial" name="razonsocial" aria-describedby="emailHelp" placeholder="Folio de usaurio" maxlength="155" value="<?php echo $razonsocial; ?>" required disabled>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="" name="usuario" aria-describedby="emailHelp" placeholder="Usuario que asigna" maxlength="33" required>
+        <input type="hidden" class="form-control" id="asignando" name="asignando" aria-describedby="emailHelp" placeholder="Usuario que asigna" maxlength="33" value="<?php echo $usuarioasignando;?>" required>
       </div>
       <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -93,7 +96,7 @@ $usuarios = $conexion->seleccionar($consul);
           <div class="input-group-prepend">
             <span class="input-group-text">Fecha estimada</span>
           </div>
-          <input type="date" id="fecha" name="trip-start" value="" min="<?php echo date('Y-m-d\TH-i');?>" class="form-control">
+          <input type="date" id="fecha" name="fecha" value="" min="<?php echo date('Y-m-d\TH-i');?>" class="form-control">
       </div>
         <button type="submit" class="btn btn-lg btn-success" style="width: 100%;">Agregar</button>
     </form> 

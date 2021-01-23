@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Clientes</title>
+    <title>Actualizando</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/svg+xml" href="../favicon/moon-solid.svg" sizes="any">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-     <?php include 'navbar1.php'?>
+     <?php include '../php/navbar1.php'?>
   
 <!-- ***************Inicio del sitio****************************** -->
   <div class="container" id="cat">
@@ -26,7 +26,7 @@
     $db=new Database();
     $db->conectarBD();
     extract($_POST);
-    $cadena="INSERT INTO tareas (cliente,usuario,asignado,servicio,nota,estado,registrado,fecha) VALUES ($idcliente,$usuario,$usuarioasignado,$servicio,'$nota',1,now(),now())";
+    $cadena="INSERT INTO tareas (cliente,usuario,asignado,servicio,nota,estado,registrado,fecha) VALUES ($cliente,$asignando,$usuarioasignado,$servicio,'$nota',1,now(),'$fecha')";
     $db->ejecutaSQL($cadena);
     $cadena2 = "SELECT*FROM tareas order by folio DESC LIMIT 1";
     $tareas = $db->seleccionar2($cadena2);
@@ -35,7 +35,7 @@
     ?>
     <div class="alert alert-success">Tarea agregada con exito con el folio <span class="badge badge-success"><?php echo $tarea; ?></span>!</div>
     <?php 
-    header("refresh:3; ../php/nuevoclienteJo.php");
+    header("refresh:3; ../php/index.php");
      ?>
   </div>
 

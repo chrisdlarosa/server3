@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION["idusuario"])) {
+    header("refresh:0; ../index.php");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -19,60 +25,38 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-shopping-cart menus"></i> Ventas
+                  <i class="fas fa-user-tie"></i> Administrador
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="ventastotales.php">Registros</a>
-                  <a class="dropdown-item" href="misVentas.php">Mis Ventas</a>
-                  <a class="dropdown-item" href="ventaa.php">Nueva Venta</a>
-                  <a class="dropdown-item" href="verClientes.php">Ver Clientes</a>
+                  <a class="dropdown-item" href="usuarios.php">Ver Usuarios</a>
+                  <a class="dropdown-item" href="nuevousuario.php">Agregar Usuario</a>
+                  <a class="dropdown-item" href="servicios.php">Servicios</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-credit-card"></i> Clientes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="clientes.php">Ver Clientes</a>
                   <a class="dropdown-item" href="nuevocliente.php">Agregar Cliente</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-box-open"></i> Productos
+                  <i class="fas fa-clipboard-list"></i> Tareas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="productos.php">Ver Productos</a>
-                  <a class="dropdown-item" href="nuevoProducto.php">Agregar Poductos</a>
-                  <a class="dropdown-item" href="categorias.php">Categorías</a>
-                  <a class="dropdown-item" href="productosxcategoria.php">Productos por Categoría</a>
-                  <a class="dropdown-item" href="productoxfolio.php">Productos por Folio</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-user-tie"></i> Usuarios
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="verUsuarios.php">Ver Usuarios</a>
-                  <a class="dropdown-item" href="nuevoVendedeor.php">Agregar Usuario</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-coins"></i> Nómina
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="versalarios.php">Ver Salario</a>
-                  <a class="dropdown-item" href="nominageneral.php">Generar Nómina</a>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fas fa-truck-loading"></i> Rutas y Fletes
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="verFletes.php">Ver Fletes</a>
-                  <a class="dropdown-item" href="nuevoFlete.php">Agregar Flete</a>
-                  <a class="dropdown-item" href="verRutas.php">Ver Rutas</a>
-                  <a class="dropdown-item" href="nuevaRuta.php">Agregar Ruta</a>
+                  <a class="dropdown-item" href="#">Progreso</a>
                 </div>
               </li>
 		      <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		        	<i class="fas fa-envelope-open"></i>
+		        	<i class="fas fa-envelope-open">
+             <?php 
+              echo $_SESSION["correo"];
+              ?>   
+              </i>
 		        </a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 		          <a class="dropdown-item" href="../scripts/close.php">Cerrar Sesión</a></a>

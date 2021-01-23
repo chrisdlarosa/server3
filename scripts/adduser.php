@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Productos</title>
+    <title>Actualizando</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/svg+xml" href="../favicon/moon-solid.svg" sizes="any">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
@@ -17,7 +17,7 @@
 	</style>
 </head>
 <body>
-     <?php include 'navbar1.php'?>
+     <?php include '../php/navbar1.php'?>
   
 <!-- ***************Inicio del sitio****************************** -->
 	<div class="container" id="cat">

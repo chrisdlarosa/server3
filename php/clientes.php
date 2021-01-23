@@ -25,7 +25,7 @@
     $conexion = new Database();
     $conexion->conectarBD();
     $consulta="SELECT*FROM clientes";
-    $clientes = $conexion->seleccionar($consulta);
+    $clientes = $conexion->seleccionar($consulta);;
      ?>
   <div class="container fondo" id="cat">
     <h2>Clientes</h2>

@@ -63,35 +63,32 @@ class Database
 			$consulta = $this->PDOLocal->query($query);
 			while ($registro = $consulta->fetch(PDO::FETCH_ASSOC))
 			{
-				if (password_verify($pass,$registro['pass']))
+				if (password_verify($pass,$registro['password']))
 				{
 					$pase=1;
-					$tipo = $registro['tipo_usuario'];
+					$tipo = $registro['tipo'];
 					$id = $registro['id'];
+					$nombre = $registro['nombre'];
 				}
 			}
 			if ($pase==1) 
 			{
 				session_start();
-				$_SESSION["usuario"]=$correo;
+				$_SESSION["correo"]=$correo;
 				$_SESSION["tipo"]=$tipo;
-				$_SESSION["user"]=$id;
+				$_SESSION["idusuario"]=$id;
+				$_SESSION["nombre"]=$nombre;
 				echo "<div class='alert alert-success'>";
-				echo "<h2 aling='center'>Bienvenido ".$_SESSION["usuario"]."</h2>";
+				echo "<h2 aling='center'>Bienvenido ".$_SESSION["nombre"]."</h2>";
 				echo "</div>";
-				if($tipo==1){
-					header("refresh:1; ../maina.view.php");
-				}
-				else {
-					header("refresh:1; ../mainv.view.php");
-				}
+				header("refresh:1; ../php/index.php");
 			}
 			else 
 			{
 				echo "<div class='alert alert-danger'>";
 				echo "<h2 aling='center'>Usuario o Contraseña Incorrectos</h2>";
 				echo "</div>";
-				header("refresh:1; ../index.php");
+				header("refresh:1; ../index.html");
 			}
 		}
 		catch(PDOException $e){

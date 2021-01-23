@@ -43,7 +43,7 @@ $correo = $users['correo'];
   
 <!-- ***************Inicio del sitio****************************** -->
     <div class="container">
-    <form action="../scripts/actualizando.php" method="post" class="form col-md-6 col-11">
+    <form action="../scripts/actualizandoo.php" method="post" class="form col-md-6 col-11">
       <h2>Modificar Usuario #<?php echo $id; ?> </h2>
       <input type="hidden" class="form-control" id="" name="id" aria-describedby="emailHelp" placeholder="" maxlength="33" value="<?php echo $id; ?>" required>
       <div class="form-group">
