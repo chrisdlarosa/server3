@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (empty($_SESSION["idusuario"])) {
-    header("refresh:0; ../index.php");
+    header("refresh:0; ../index.html");
 }
 ?>
 

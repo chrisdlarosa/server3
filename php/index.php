@@ -1,10 +1,3 @@
-<?php
-session_start();
-if (empty($_SESSION["idusuario"])) {
-    header("refresh:0; ../index.php");
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
