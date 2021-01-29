@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mis tareas</title>
+    <title>Tareas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/svg+xml" href="../favicon/moon-solid.svg" sizes="any">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
@@ -27,13 +27,13 @@
       include '../scripts/database.php';
       $conexion = new Database();
       $conexion->conectarBD();
-      $consulta="SELECT t.folio, c.nombre as cliente, u.nombre as usuario, s.nombre as servicio, t.nota, t.estado, t.registrado, t.fecha FROM tareas as t INNER JOIN clientes as c ON c.id = t.cliente INNER JOIN usuarios as u ON t.usuario = u.id INNER JOIN servicios as s ON t.servicio = s.cve WHERE t.asignado = $con";
+      $consulta="SELECT t.folio, c.nombre as cliente, u.nombre as usuario, s.nombre as servicio, t.nota, t.estado, t.registrado, t.fecha FROM tareas as t INNER JOIN clientes as c ON c.id = t.cliente INNER JOIN usuarios as u ON t.asignado = u.id INNER JOIN servicios as s ON t.servicio = s.cve WHERE t.asignado = $con";
       $tareas = $conexion->seleccionar($consulta);
       $card = 0;
      ?>
 <!-- ***************Inicio del sitio******************* -->
 	<div class="container fondo" id="cat">
-    <h2>Mis tareas</h2>
+    <h2>Tareas asignadas</h2>
     <table class="table table-hover table-responsive-sm">
       <thead class="bg-primary">
         <th scope="col">Folio</th>

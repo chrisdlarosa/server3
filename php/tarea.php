@@ -9,7 +9,7 @@ $tarea = $_GET['tarea'];
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Tarea | <?php echo $foliot; ?></title>
+    <title>Tarea | <?php echo $tarea; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/svg+xml" href="../favicon/moon-solid.svg" sizes="any">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
@@ -44,7 +44,7 @@ $tarea = $_GET['tarea'];
       $fecha = $tareainfo['fecha'];
 
 
-      $consulta2="SELECT*FROM respuestas INNER JOIN tareas ON respuestas.tarea = tareas.folio WHERE tareas.folio = $tarea";
+      $consulta2="SELECT r.respuesta, r.registrado, concat(u.nombre,' ',u.apellidos) as user FROM respuestas as r INNER JOIN tareas as t ON r.tarea = t.folio INNER JOIN usuarios as u ON u.id = r.usuario WHERE t.folio = $tarea";
       $tarearespuestas = $conexion->seleccionar($consulta2);
 
 
@@ -100,7 +100,7 @@ $tarea = $_GET['tarea'];
           </div>
           <input type="text" class="form-control" id="" name="estado" aria-describedby="emailHelp" placeholder="Estado" maxlength="22" value="<?php echo $texto; ?>" required disabled>
       </div>
-        <button type="submit" class="btn btn-lg btn-warning" style="width: 100%; margin-top: 10px;">Modificar datos de cliente</button>
+        <button type="button" class="btn btn-lg btn-warning" data-toggle="modal" data-target="#estado" data-whatever="@fat" style="width: 100%">Actualizar estado</button>
     </form>
   </div>
 
@@ -114,18 +114,16 @@ $tarea = $_GET['tarea'];
     </div>
     <table class="table table-striped table-responsive-sm">
       <thead class="bg-info">
-        <th scope="col">###</th>
+        <th scope="col">Fecha</th>
         <th scope="col">Usuario</th>
         <th scope="col">Mensaje</th>
-        <th scope="col">Fecha</th>
       </thead>
       <tbody>
         <?php foreach($tarearespuestas as $resp): ?>
           <tr>
-            <td> <?php echo $resp->reg; ?> </td>
-            <td> <?php echo $resp->usuario; ?> </td>
-            <td> <?php echo $resp->respuesta; ?> </td>
             <td> <?php echo $resp->registrado; ?> </td>
+            <td> <?php echo $resp->user; ?> </td>
+            <td> <?php echo $resp->respuesta; ?> </td>
           </tr>
         <?php endforeach; ?>
       </tbody>
@@ -138,7 +136,7 @@ $tarea = $_GET['tarea'];
 
 
 
-<!-- **************************MODAL de DIRECCIONES************************** -->
+<!-- **************************MODAL de RESPUESTAS************************** -->
 
   <div class="modal fade" id="respuesta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -150,23 +148,58 @@ $tarea = $_GET['tarea'];
           </button>
         </div>
         <div class="modal-body">
-          <form action="../scripts/agregandodireccion.php" method="post" id="respuesta">
+          <form action="../scripts/respuesta.php" method="post" id="resp">
             <input type="hidden" class="form-control" id="" name="tarea" aria-describedby="emailHelp" placeholder="" value="<?php echo $foliot; ?>" required>
-            <input type="hiddea n" class="form-control" id="" name="usuario" aria-describedby="emailHelp" placeholder="Usuario" value="<?php echo $con; ?>" required>
+            <input type="hidden" class="form-control" id="" name="usuario" aria-describedby="emailHelp" placeholder="Usuario" value="<?php echo $con; ?>" required>
             <div class="form-group">
               <label for="nota">Respuesta:</label>
-              <textarea class="form-control" id="" name="respuesta" rows="3" maxlength="255" placeholder="Respuesta"></textarea>
+              <textarea class="form-control" id="" name="respuesta" rows="3" maxlength="255" placeholder="Respuesta" required></textarea>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary" form="respuesta">Registrar</button>
+          <button type="submit" class="btn btn-primary" form="resp">Registrar</button>
         </div>
       </div>
     </div>
   </div>
 
+
+
+<!-- **************************MODAL de ESTADO************************** -->
+
+  <div class="modal fade" id="estado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar estado a tarea #<?php echo $foliot; ?></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="../scripts/estado.php" method="post" id="est">
+            <input type="hidden" class="form-control" id="" name="tarea" aria-describedby="emailHelp" placeholder="" value="<?php echo $foliot; ?>" required>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Estado</span>
+              </div>
+              <select class="form-control" id="sel1" name="estado">
+                  <option value="1">Pendiente</option>
+                  <option value="2">Urgente</option>
+                  <option value="3">Revisado</option>
+            </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" form="est">Actualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

@@ -47,7 +47,7 @@ if (empty($_SESSION["idusuario"])) {
                   <i class="fas fa-clipboard-list"></i> Tareas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Progreso</a>
+                  <a class="dropdown-item" href="mistareas.php">Mis tareas</a>
                 </div>
               </li>
 		      <li class="nav-item dropdown">
