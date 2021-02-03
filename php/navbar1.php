@@ -48,6 +48,7 @@ if (empty($_SESSION["idusuario"])) {
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="mistareas.php">Mis tareas</a>
+                  <a class="dropdown-item" href="tareas.php">Tareas</a>
                 </div>
               </li>
 		      <li class="nav-item dropdown">
