@@ -52,8 +52,22 @@ $tarea = $_GET['tarea'];
   
 <!-- ***************Inicio del sitio****************************** -->
   <div class="container fondo">
+    <div class="row" style="margin-bottom: 20px; margin-top: 50px">
+      <div class="col-md-10 col-12"><h2>Tarea #<?php echo $foliot; ?> </h2></div>
+      <div class="col-md-2 col-12">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Opciones
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#estado" data-whatever="@fat">Cambiar estado</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#respuesta" data-whatever="@fat">Responder</a>
+            <a class="dropdown-item" href="#">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <form action="../php/upcliente.php" method="get" class="form col-md-6 col-11">
-      <h2>Tarea #<?php echo $foliot; ?> </h2>
       <input type="hidden" class="form-control" id="" name="id" aria-describedby="emailHelp" placeholder="" maxlength="33" value="<?php echo $foliot; ?>" required>
       <div class="form-group">
         <input type="text" class="form-control" id="" name="cliente" aria-describedby="emailHelp" placeholder="Nombre del cliente" maxlength="111" value="<?php echo $cliente; ?>" required disabled>
@@ -100,7 +114,6 @@ $tarea = $_GET['tarea'];
           </div>
           <input type="text" class="form-control" id="" name="estado" aria-describedby="emailHelp" placeholder="Estado" maxlength="22" value="<?php echo $texto; ?>" required disabled>
       </div>
-        <button type="button" class="btn btn-lg btn-warning" data-toggle="modal" data-target="#estado" data-whatever="@fat" style="width: 100%">Actualizar estado</button>
     </form>
   </div>
 

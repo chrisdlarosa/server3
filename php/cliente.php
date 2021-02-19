@@ -50,8 +50,23 @@ $direcciones = $conexion->seleccionar($cadena3);
   
 <!-- ***************Inicio del sitio****************************** -->
   <div class="container fondo">
+    <div class="row" style="margin-bottom: 20px; margin-top: 50px">
+      <div class="col-md-10 col-12"><h2><?php echo $nombre; ?> </h2></div>
+      <div class="col-md-2 col-12">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Opciones
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Actualizar informacion</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#acontacto" data-whatever="@fat">Agregar Contacto</a>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#adireccion" data-whatever="@fat">Agregar Direccion</a>
+            <a class="dropdown-item" href="#">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <form action="../php/upcliente.php" method="get" class="form col-md-6 col-11">
-      <h2><?php echo $nombre; ?> </h2>
       <input type="hidden" class="form-control" id="" name="id" aria-describedby="emailHelp" placeholder="" maxlength="33" value="<?php echo $id; ?>" required>
       <div class="form-group">
         <input type="text" class="form-control" id="" name="folio" aria-describedby="emailHelp" placeholder="Folio" maxlength="11" value="<?php echo $folio; ?>" required disabled>
